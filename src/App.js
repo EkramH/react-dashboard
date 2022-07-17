@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { Navbar, Footer, Sidebar, ThemeSetting } from "./components";
 import {
-  ECommerce,
+  Ecommerce,
   Orders,
   Calendar,
   Employees,
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="flex relative dark:bg-main-dark-bg">
-      <div className="fixed right-4 bottom-4" style={{ index: "1000" }}>
+      <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
         <TooltipComponent content="Settings" position="Top">
           <button
             type="button"
@@ -61,8 +61,8 @@ function App() {
       <div>
         <Routes>
           {/* Dashboard */}
-          <Route path="/" element={<ECommerce />} />
-          <Route path="/ecommerce" element={<ECommerce />} />
+          <Route path="/" element={<Ecommerce />} />
+          <Route path="/ecommerce" element={<Ecommerce />} />
 
           {/* Pages */}
           <Route path="/orders" element={<Orders />} />
