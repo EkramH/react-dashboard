@@ -4,6 +4,8 @@ import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { Route, Routes } from "react-router-dom";
 
+import { useStateContext } from "./context/ContextProvider";
+
 import { Navbar, Footer, Sidebar, ThemeSetting } from "./components";
 import {
   Ecommerce,
@@ -25,7 +27,7 @@ import {
 } from "./pages";
 
 function App() {
-  const activeMenu = true;
+  const { activeMenu } = useStateContext();
 
   return (
     <div className="flex relative dark:bg-main-dark-bg">
