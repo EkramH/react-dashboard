@@ -6,7 +6,7 @@ import { RiNotification3Line } from "react-icons/ri";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import avatar from "../data/avatar.jpg";
-import { Cart, Chat, Notification, userProfile } from ".";
+import { Cart, Chat, Notification, UserProfile } from ".";
 import { useStateContext } from '../context/ContextProvider';
 
 const NavButton = ({ title, customFunc, icon, color, dotcolor }) => (
@@ -21,7 +21,7 @@ const NavButton = ({ title, customFunc, icon, color, dotcolor }) => (
 
 
 const Navbar = () => {
-    const { activeMenu, setActiveMenu } = useStateContext();
+    const { activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick } = useStateContext();
     return (
         <div className="flex justify-between p-2 md:mx-6 relative">
             <NavButton 
@@ -34,26 +34,26 @@ const Navbar = () => {
             <div className="flex">
             <NavButton 
                 title="Cart" 
-                customFunc={() => {}} 
+                customFunc={() => handleClick("cart")} 
                 color="blue" 
                 icon={<FiShoppingCart />} 
             />
             <NavButton 
                 title="Chat"
                 dotcolor="#03C9D7"
-                customFunc={() => {}} 
+                customFunc={() => handleClick("chat")} 
                 color="blue" 
                 icon={<BsChatLeft />} 
             />
             <NavButton 
                 title="Notification"
                 dotcolor="#03C9D7"
-                customFunc={() => {}} 
+                customFunc={() => handleClick("notification")} 
                 color="blue" 
                 icon={<RiNotification3Line />} 
             />
             <TooltipComponent content="Profile" position="BottomCenter">
-                <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg" onClick={() => {}}>
+                <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg" onClick={() => handleClick("userProfile")}>
                     <img src={avatar} alt="" className="rounded-full w-8 h-8" />
                     <p>
                         <span className="text-gray-400 text-14">Hi, </span>
@@ -62,6 +62,10 @@ const Navbar = () => {
                     <MdKeyboardArrowDown className="text-gray-400 text-14" />
                 </div>
             </TooltipComponent>
+            {isClicked.cart && <Cart />}
+            {isClicked.chat && <Chat />}
+            {isClicked.notification && <Notification />}
+            {isClicked.userProfile && <UserProfile />}
             </div>
         </div>
     );
