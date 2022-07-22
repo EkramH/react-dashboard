@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
-import { Stacked, Pie, Button, Sparkline } from '../components';
+import { Stacked, Pie, Button, SparkLine } from '../components';
 import { earningData, SparklineAreaData, ecomPieChartData } from '../data/dummy';
 import { useStateContext } from '../context/ContextProvider';
 
@@ -52,6 +52,33 @@ const Ecommerce = () => {
                                 <span><GoPrimitiveDot /></span>
                                 <span>Budget</span>
                             </p>
+                        </div>
+                    </div>
+                    <div className='mt-10 flex gap-10 flex-wrap justify-center'>
+                        <div className='border-r-1 border-color m-4 pr-10'>
+                            <div>
+                                <p>
+                                    <span className='text-3xl font-semibold'>$95,324</span>
+                                    <span className='p-1.5 hover:drop-shadow-xl cursor-pointer rounded-full text-white bg-green-400 ml-3 text-xs'>23%</span>
+                                </p>
+                                <p className='text-gray-500 mt-1'>Budget</p>
+                            </div>
+                            <div className='mt-8'>
+                                <p>
+                                    <span className='text-3xl font-semibold'>$42,324</span>
+                                </p>
+                                <p className='text-gray-500 mt-1'>Expense</p>
+                            </div>
+                            <div>
+                                <SparkLine 
+                                currentColor='blue' 
+                                id='line-sparkline'
+                                type='line'
+                                height='80px'
+                                weight='250px'
+                                data={SparklineAreaData}
+                                color='blue' />
+                            </div>
                         </div>
                     </div>
                 </div>
